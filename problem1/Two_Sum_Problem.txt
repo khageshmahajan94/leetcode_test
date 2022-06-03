@@ -1,0 +1,31 @@
+/*
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+*/
+
+
+
+class Solution { 
+    public int[] twoSum(int[] nums, int target) { //function taking array and target value
+        int[] arr = new int[2];                   //for storing and returning the answers, array of size 2 declare
+        int n = nums.length;
+        aa:
+        for(int i =0; i<n; i++){                  //outer loop for traversing array 1 by 1 from 0th index
+            for(int j=i+1; j<n; j++){             //inner loop for addition and equality checking 
+                if((nums[i]+nums[j]) == target){  //add two nums and check equality with the target
+                    arr[0] = i;                   //if sum == target then add index position in the array
+                    arr[1] = j;
+                    break aa;
+                }
+            }
+        }
+        
+        return arr;                                //return array of answer to the calling function.
+    }
+    
+}
