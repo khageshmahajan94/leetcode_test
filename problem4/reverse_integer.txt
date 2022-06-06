@@ -1,0 +1,17 @@
+class Solution {
+    public int reverse(int x) { //function for reverse the number
+        int result = 0;
+        while(x != 0){          //check whether x is zero or not
+            
+            if(result > Integer.MAX_VALUE/10 || result < Integer.MIN_VALUE/10){ //check whether the result is between 2^31-1 and -2^31, if no return 0
+                return 0;
+            }
+            
+            int remainder = x % 10; //calculate remainder of the number
+            result = result * 10 + remainder; //append the remainder with result so we get reverse number
+            
+            x = x / 10;         //divide x by 10 so we get divisor and use that divisor further
+        }
+        return result;
+    }
+}
