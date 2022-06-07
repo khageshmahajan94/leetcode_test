@@ -1,0 +1,24 @@
+class Solution {
+    public int rob(int[] nums) {        //rob function taking array as input
+        if(nums.length == 1){           //if array length is 1 then return directly that no.
+            return nums[0];
+        }
+        if(nums.length == 2){           //if array length is 2 then return max of both 2 nu.
+            return Math.max(nums[0], nums[1]);
+        }
+        
+        int prev = 0;
+        int next = 0;
+        
+        for(int i = 2; i < nums.length; i++){    //iterate array from index 2 upto array size
+            prev = nums[i-2];
+            if(next < prev){                    //check if next value is less than prev if yes then assign prev value to next
+                next = prev;
+            }
+            prev = Math.max(next, prev);
+            nums[i] = nums[i] + prev;           //replace current index value with sum of previous max num to current index no. so we as we iterate the max sum will store in the array 
+        }
+        
+        return Math.max(nums[nums.length - 1], nums[nums.length - 2]);   //return the max value between last and previous of last element
+    }
+}
